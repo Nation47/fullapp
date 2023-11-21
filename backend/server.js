@@ -1,16 +1,37 @@
 // to access our private port
 require('dotenv').config()
 
+const express = require('express')
+const workoutsRoutes = require('./routes/workouts')
+const mongoose = require('mongoose')
+
+
 // creating express app
-const express = require('express');
 const app = express()
 
-// react to request
-app.get('/', (req, res) => {
-    res.json({mssg: 'welcome to the app'})
+// middleware
+app.use(express.json())
+
+app.use((req, res, next) => {
+    console.log(req.path, req.method)
+    next()
 })
 
-// listening to requests
-app.listen(process.env.PORT, () => {
-    console.log('Listening on Port', process.env.PORT)
+// routes
+app.use('/api/workouts', workoutsRoutes)
+
+// connect database
+mongoose.connect(process.env.URI)
+    .then(() => {
+        // listening to requests
+        app.listen(process.env.PORT, () => {
+        console.log('Listening on Port', process.env.PORT)
 })
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+
+
+
+
