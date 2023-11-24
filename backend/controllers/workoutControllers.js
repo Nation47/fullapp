@@ -7,7 +7,7 @@ const getWorkouts = async (req, res) => {
     res.status(200).json(workouts)
 }
 
-// Get a single data
+// Get a single data, mtoto kakutana na beki napiga miguu yote 
 const getWorkout = async (req, res) => {
     const { id } = req.params
 
