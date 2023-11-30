@@ -7,7 +7,7 @@ const getWorkouts = async (req, res) => {
     res.status(200).json(workouts)
 }
 
-// Get a single data, mtoto kakutana na beki napiga miguu yote 
+// Get a single data, Live your life
 const getWorkout = async (req, res) => {
     const { id } = req.params
 
@@ -23,11 +23,11 @@ const getWorkout = async (req, res) => {
     res.status(200).json(workout)
 }
 
-// Create new data
+// Create new data, Ever blazin
 const createWorkout = async (req, res) => {
     const {title, load, reps} = req.body
 
-    // create data into db
+    // create data into db, Levitating
     try{
         const workout = await Workout.create({title, load, reps})
         res.status(200).json(workout)
@@ -36,7 +36,7 @@ const createWorkout = async (req, res) => {
     }
 }
 
-// Delete Data
+// Delete Data, I'm into you
 const deleteWorkout = async (req, res) => {
     const { id } = req.params
 
